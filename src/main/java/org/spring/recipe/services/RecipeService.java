@@ -1,6 +1,5 @@
 package org.spring.recipe.services;
 
-import static org.mockito.Mockito.RETURNS_DEEP_STUBS;
 
 import java.util.HashSet;
 import java.util.Optional;
@@ -10,7 +9,6 @@ import org.spring.recipe.model.Recipe;
 import org.spring.recipe.repository.RecipeRepository;
 import org.springframework.stereotype.Service;
 
-import antlr.collections.List;
 
 @Service
 public class RecipeService {
