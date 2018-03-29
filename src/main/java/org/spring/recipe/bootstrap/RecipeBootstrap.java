@@ -78,12 +78,13 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
 	private Recipe getGuacamoleRecipe() {
 		Recipe GuacRecipe= new Recipe();
 		GuacRecipe.setCookTime(5);
-		GuacRecipe.setServTime(0);
+		GuacRecipe.setServTime(20);
 		GuacRecipe.setPrepTime(10);
+		GuacRecipe.setName("Guacamole");
 		Category category = this.getCategory(Categories.MEXICAN);
 		category.getRecipes().add(GuacRecipe);
 		GuacRecipe.getCategories().add(category);
-		GuacRecipe.setSource("Simply Recipe");
+		GuacRecipe.setServes("4");
 		GuacRecipe.setUrl("https://www.simplyrecipes.com/recipes/perfect_guacamole/");
 		GuacRecipe.setDescription("Guacamole, a dip made from avocados, is originally from Mexico."
 				+ " The name is derived from two Aztec Nahuatl words—ahuacatl (avocado) and molli (sauce).");
@@ -129,10 +130,11 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
 		chickenTacos.setCookTime(20);
 		chickenTacos.setServTime(0);
 		chickenTacos.setPrepTime(10);
+		chickenTacos.setName("Spicy Grilled Chicken Tacos");
 		Category category = this.getCategory(Categories.MEXICAN);
 		category.getRecipes().add(chickenTacos);
 		chickenTacos.getCategories().add(category);
-		chickenTacos.setSource("Simply Recipes");
+		chickenTacos.setServes("3");
 		chickenTacos.setUrl("https://www.simplyrecipes.com/recipes/spicy_grilled_chicken_tacos/");
 		chickenTacos.setDescription("Spicy grilled chicken tacos! Quick marinade, then grill. Ready in about 30 minutes."
 				+ " Great for a quick weeknight dinner, backyard cookouts, and tailgate parties.");

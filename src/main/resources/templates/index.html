@@ -5,50 +5,59 @@
 	<title>Recipe Home</title>
 		<meta charset="UTF-8"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-		<link rel="stylesheet" 
+		 <link rel="stylesheet" 
 			href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
-			integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" 
-			crossorigin="anonymous">
+			
+			th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css}">
 		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" 
-			integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" 
-			crossorigin="anonymous"></script>
+			th:src="@{/webjars/jquery/3.3.1-1/jquery.min.js}"></script>
     	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" 
-    		integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" 
-    		crossorigin="anonymous"></script>
+    		th:src="@{/webjars/popper.js/1.12.9-1/popper.js}"></script>
     	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" 
-    		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" 
-    		crossorigin="anonymous"></script>
+    		 th:src="@{/webjars/bootstrap/4.0.0-2/js/bootstrap.min.js}"></script> 
+		<style type="text/css">
+			.card-body {
+			padding: 0;
+			}
+			.tab-header {
+			background-color: grey;
+			}
+		</style>
 	</head>
 	
 	<body>
-		
 		<div class="container container-fluid" style="margin-top: 20px;">
 		 <div class="row">
-		 	<div class="col-md-6 col-md-offset-3">
-		 		<div class="panel panel-primary">
-		 			<div class="panel-heading">
-		 			<h1>Recipe List</h1>
+		 	<div class="col-md-10 col-md-offset-3">
+		 		<div class="card" style="display:block;">
+		 			<div class="card-header text-center">
+		 				<div class="card-title">Recipe List</div>
 		 			</div>
-		 			<div class="panel-body">
+		
+		 			<div class="card-body">
 		 				<div class="table-responsive" th:if= "${not #lists.isEmpty(recipes)}">
-		 					<div class="table table-hover" >
-								<div class="thead-inverse">
-									<div class="row">
-										<div class="col-md-2">ID</div>
-										<div class="col-md-6">Description</div>
-									</div>
-								</div>
-								<div class="row" th:each="recipe : ${recipes}" >
-									<div class="col-md-2" th:text="${recipe.id}">123</div>
-									<div class="col-md-8" th:text="${recipe.description}">Recipe Description</div>
-								</div>
-							</div>
+		 					<table class="table table-hover" >
+								<thead class="tab-header">
+									<tr>
+										<th >ID</th>
+										<th >Description</th>
+										<th>View</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr  th:each="recipe : ${recipes}" >
+										<td   th:text="${recipe.id}">123</td>
+										<td   th:text="${recipe.description}">Recipe Description</td>
+										<td><a th:href= "@{'/recipe/show/'+${recipe.id}}">View</a>
+									</tr>
+								</tbody>
+							</table>
 		 				</div>
 		 			</div>
 		 		</div>
 		 	</div>
 		 </div>
-		
+		<br/>
 		<h4 th:text="${message}">Message will be displayed here</h4>
 		</div>
 	</body>

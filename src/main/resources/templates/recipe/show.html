@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+	<head>
+	<title>Recipe Home</title>
+		<meta charset="UTF-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		 <link rel="stylesheet" 
+			href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
+			
+			th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css}">
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" 
+			th:src="@{/webjars/jquery/3.3.1-1/jquery.min.js}"></script>
+    	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" 
+    		th:src="@{/webjars/popper.js/1.12.9-1/popper.js}"></script>
+    	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" 
+    		 th:src="@{/webjars/bootstrap/4.0.0-2/js/bootstrap.min.js}"></script> 
+		<style type="text/css">
+			.card-body {
+			
+			}
+			.tab-header {
+			background-color: grey;
+			}
+			.bold {
+			font-weight: 600;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<div class="container-fluid justify-content-center" style="">
+			
+			<div class="card mx-auto" style="width:60%; margin-top:20px;">
+				<div class="card-header text-center ">
+					<div class="card-title" th:text="${recipe.name}">Recipe Description Here!</div>
+				</div>
+				<div class="card-body">
+					<div class="row">
+						<div class="col-md-2 bold">Categories: </div>
+						<div class="col-md-6">
+							<div class = "row" th:each= "category: ${recipe.categories}">
+								<div class = "col-md-3" th:text = "${category.description}">Category Name</div>
+							</div> 
+						
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-2 bold" >Prep Time: </div>
+						<div class="col-md-2" th:text = "${recipe.prepTime}+@{' Minutes'}">20 Minutes</div>
+						<div class="col-md-2 bold" >Cook Time: </div>
+						<div class="col-md-2" th:text = "${recipe.cookTime}+@{' Minutes'}">15 Minutes</div>
+						<div class="col-md-2 bold">Serv Time: </div>
+						<div class="col-md-2" th:text = "${recipe.servTime}+@{' Minutes'}">10 Minutes</div>
+					</div>
+					<div class="row">
+						<div class="col-md-2 bold">Difficulty: </div>
+						<div class="col-md-2" th:text="${recipe.difficulty}">Easy</div>
+						<div class="col-md-2 bold">Serves: </div>
+						<div class="col-md-2" th:text="${recipe.serves}">10</div>
+					</div>
+					<div class="row">
+						<div class="col-md-1 bold">URL:</div>
+						<div class="col-md-11" th:text = "${recipe.url}">Source URL</div>
+					</div>
+				</div>
+			</div>
+			
+			
+			<br/>
+			<div class="card mx-auto" style="width:60%;" >
+				<div class="card-header text-center">
+					<div class="card-title">Ingredients</div>
+				</div>
+				<div class="card-body">
+					<ul class="list-group">
+						<li class="list-group-item" th:each="ingredient: ${recipe.ingredients}" th:text = "${#numbers.formatDecimal(ingredient.amount, 0, 2)} +@{' - '}+ ${ingredient.uom.description}+@{' of '}+${ingredient.description}">1 Cup of Water</li>
+						<li class="list-group-item" th:each="ingredient: ${recipe.ingredients}" th:remove="all">1 Tablespoon of Oil</li>
+						<li class="list-group-item" th:each="ingredient: ${recipe.ingredients}" th:remove="all">1 Teaspoon of Dal</li>
+												
+					</ul>
+				</div>
+			</div>
+			<br/>
+			<div class = "card mx-auto" style="width:60%;">
+				<div class="card-header text-center">
+					<div class="card-title">
+						Notes
+					</div>
+				</div>
+				<div class="card-body">
+				
+					<div th:utext="${#strings.replace(#strings.escapeXml(recipe.notes.notes),'&#10;','&lt;br/&gt;')}">Notes Here</div>
+				</div>
+			</div>
+			<br/>
+			<div class = "card mx-auto" style="width:60%;">
+				<div class="card-header text-center">
+					<div class="card-title">
+						Directions
+					</div>
+				</div>
+				<div class="card-body">
+					<div th:utext="${#strings.replace(#strings.escapeXml(recipe.directions),'&#10;','&lt;br/&gt;')}">Directions Here</div>
+				</div>
+			</div>
+		</div>	
+	</body>
+</html>

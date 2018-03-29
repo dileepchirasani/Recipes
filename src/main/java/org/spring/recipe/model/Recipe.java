@@ -26,11 +26,12 @@ public class Recipe {
 	@Id
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	private Long id;
+	private String name;
 	private String description;
 	private Integer prepTime;
 	private Integer cookTime;
 	private Integer servTime;
-	private String source;
+	private String serves;
 	private String url;
 	
 	@Lob
@@ -65,6 +66,12 @@ public class Recipe {
 	 */
 	public void setId(Long id) {
 		this.id = id;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
 	}
 	/**
 	 * @return the description
@@ -115,16 +122,16 @@ public class Recipe {
 		this.servTime = servTime;
 	}
 	/**
-	 * @return the source
+	 * @return the serves
 	 */
-	public String getSource() {
-		return source;
+	public String getServes() {
+		return serves;
 	}
 	/**
-	 * @param source the source to set
+	 * @param serves the source to set
 	 */
-	public void setSource(String source) {
-		this.source = source;
+	public void setServes(String serves) {
+		this.serves = serves;
 	}
 	/**
 	 * @return the url

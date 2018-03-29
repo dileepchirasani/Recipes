@@ -3,6 +3,7 @@ package org.spring.recipe.services;
 import static org.mockito.Mockito.RETURNS_DEEP_STUBS;
 
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 
 import org.spring.recipe.model.Recipe;
@@ -24,5 +25,10 @@ public class RecipeService {
 		Set<Recipe> recipes = new HashSet<Recipe>();
 		this.recipeRepo.findAll().forEach(recipes :: add);
 		return recipes;
+	}
+	
+	public Optional<Recipe> getRecipeById(Long id) {
+		Optional<Recipe> recipeOp = this.recipeRepo.findById(id);
+		return recipeOp;
 	}
 }

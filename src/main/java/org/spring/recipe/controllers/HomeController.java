@@ -27,7 +27,7 @@ public class HomeController {
 	
 	@RequestMapping({"","/","/index","index"})
 	public String getHome(Model model) {
-		//this.recipeBootstrap.saveRecipe();
+		// this.recipeBootstrap.saveRecipe();
 		model.addAttribute("recipes",this.recipeService.getRecipes());
 		
 		model.addAttribute("message","Hello from Controller haha");
