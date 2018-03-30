@@ -1,5 +1,6 @@
 package org.spring.recipe.model;
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -31,7 +32,7 @@ public class Recipe {
 	private Integer prepTime;
 	private Integer cookTime;
 	private Integer servTime;
-	private String serves;
+	private Integer serves;
 	private String url;
 	
 	@Lob
@@ -124,13 +125,13 @@ public class Recipe {
 	/**
 	 * @return the serves
 	 */
-	public String getServes() {
+	public Integer getServes() {
 		return serves;
 	}
 	/**
 	 * @param serves the source to set
 	 */
-	public void setServes(String serves) {
+	public void setServes(Integer serves) {
 		this.serves = serves;
 	}
 	/**
@@ -198,6 +199,13 @@ public class Recipe {
 	}
 	public void setCategories(Set<Category> categories) {
 		this.categories = categories;
+	}
+	@Override
+	public String toString() {
+		return "Recipe [id=" + id + ", name=" + name + ", description=" + description + ", prepTime=" + prepTime
+				+ ", cookTime=" + cookTime + ", servTime=" + servTime + ", serves=" + serves + ", url=" + url
+				+ ", directions=" + directions + ", ingredients=" + ingredients + ", image=" + Arrays.toString(image)
+				+ ", notes=" + notes + ", difficulty=" + difficulty + ", categories=" + categories + "]";
 	}
 	
 }

@@ -50,4 +50,10 @@ public class Category {
 	public void setRecipes(Set<Recipe> recipes) {
 		this.recipes = recipes;
 	}
+	@Override
+	public String toString() {
+		return "Category [id=" + id + ", description=" + description + ", recipes=" + recipes + "]";
+	}
+	
+	
 }

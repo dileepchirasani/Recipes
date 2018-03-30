@@ -72,5 +72,6 @@ public class HomeControllerTest {
 		verify(model, times(1)).addAttribute(Mockito.eq("recipes"), argumentCaptor.capture());
 		verify(model, times(1)).addAttribute(Mockito.eq("message"), Mockito.anyString());
 		assertEquals(2, argumentCaptor.getValue().size());
+		
 	}
 }
