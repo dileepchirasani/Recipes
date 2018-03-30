@@ -44,20 +44,7 @@ public class RecipeServicesTest {
 	
 	@Autowired
 	RecipeRepository recipeRepository;
-	/*// As Recipe contains details of Category, Ingredient and others.. and as we are including conversion of those classes..
-	// Their Respective Repositories should be enabled for database initialization. Since this is H2 database. and no data is present in prior of execution. 
-	@Autowired 
-	CategoryRepository categoryRepository;
 	
-	@Autowired
-	IngredientRepository ingredientRepo;
-	
-	@Autowired
-	NotesRepository notesRepo;
-	
-	@Autowired
-	UnitOfMeasureRepository uomRepo;
-	*/
 	@Autowired
 	RecipeToCommand recipeConverter;
 	
